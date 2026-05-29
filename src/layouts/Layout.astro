@@ -1,0 +1,39 @@
+---
+import '../styles/global.css';
+const {
+  title = 'Becoming an FDE',
+  description = 'A public journal on preparing for Forward Deployed Engineer roles.',
+} = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="header">
+        <a class="logo" href="/">Becoming an FDE</a>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="/journal/">Journal</a>
+          <a href="/research/">Research</a>
+          <a href="/job-postings/">Job Postings</a>
+          <a href="/sample-cases/">Sample Cases</a>
+          <a href="/portfolio/">Portfolio</a>
+          <a href="/roadmap/">Roadmap</a>
+          <a href="/now/">Now</a>
+          <a href="/about/">About</a>
+        </nav>
+      </header>
+      <main>
+        <slot />
+      </main>
+      <footer class="footer">
+        <p>fde.urangurang.com — a public field notebook for FDE preparation.</p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,128 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const cases = [
+  {
+    number: '01',
+    title: 'A Sales Team Wants AI to Summarize Discovery Calls',
+    request: '“Can AI turn our customer calls into notes, next steps, and CRM updates?”',
+    problem: 'The real problem is not summarization. It is follow-up quality, handoff reliability, and sales team execution speed.',
+    mvp: 'Transcript → structured summary → risks → next actions → human review before CRM update.',
+    tags: ['Sales', 'LLM workflow', 'CRM'],
+    href: '/sample-cases/sales-discovery-calls/',
+  },
+  {
+    number: '02',
+    title: 'A Support Team Needs to Classify Customer Complaints',
+    request: '“We have too many tickets and do not know which issues are repeating.”',
+    problem: 'The team needs operational visibility: recurring issues, severity, ownership, and product feedback loops.',
+    mvp: 'Ticket export → category classifier → confidence score → weekly insight report for product and support leads.',
+    tags: ['Support', 'Classification', 'Reporting'],
+  },
+  {
+    number: '03',
+    title: 'A SaaS Onboarding Team Wants Less Manual Implementation Work',
+    request: '“Every customer setup is slightly different and our team repeats the same work.”',
+    problem: 'The work needs to become a repeatable implementation system, not a collection of one-off setup tasks.',
+    mvp: 'Customer intake → configuration checklist → validation rules → implementation status dashboard.',
+    tags: ['Onboarding', 'Workflow', 'Validation'],
+  },
+  {
+    number: '04',
+    title: 'A Finance Team Wants Spreadsheet Reconciliation Automated',
+    request: '“Every month we compare reports manually and spend days finding mismatches.”',
+    problem: 'This is an auditability and deterministic data pipeline problem before it is an AI problem.',
+    mvp: 'Upload sheets → normalize fields → rule-based diff → LLM-generated explanation draft with source links.',
+    tags: ['Finance', 'Deterministic logic', 'Audit'],
+  },
+];
+
+const steps = [
+  'Clarify the customer request',
+  'Find the real operational problem',
+  'Define success criteria',
+  'Design the smallest useful MVP',
+  'Identify risks and human review points',
+  'Plan deployment and feedback loops',
+];
+---
+<Layout
+  title="Sample Cases | Becoming an FDE"
+  description="Fictional customer scenarios showing how an FDE might clarify, design, and deploy practical solutions."
+>
+  <section class="hero split-hero">
+    <div>
+      <div class="eyebrow">Sample Cases</div>
+      <h1>Fictional customer problems, solved like an FDE.</h1>
+      <p class="lede">Each case starts with a messy customer request, then turns it into questions, success criteria, an MVP architecture, tradeoffs, and a deployment plan.</p>
+      <div class="actions">
+        <a class="button" href="#case-grid">Browse cases</a>
+        <a class="button secondary" href="#case-method">See the method</a>
+      </div>
+    </div>
+    <aside class="hero-panel" aria-label="Sample case structure">
+      <p class="kicker">Case structure</p>
+      <ol class="compact-steps">
+        {steps.map((step) => <li>{step}</li>)}
+      </ol>
+    </aside>
+  </section>
+
+  <section id="case-grid" class="section case-section">
+    <div class="section-heading">
+      <p class="kicker">Content format</p>
+      <h2>Cards first, details second.</h2>
+      <p>On desktop, cases are scannable cards. On mobile, they collapse into a single reading column so the customer request and proposed MVP stay easy to follow.</p>
+    </div>
+
+    <div class="case-grid">
+      {cases.map((item) => (
+        <article class="case-card">
+          <a class="case-card-link" href={item.href ?? '#'} aria-label={`Open sample case: ${item.title}`}>
+            <div class="case-card-topline">
+              <span>{item.number}</span>
+              <div class="tag-row">
+                {item.tags.map((tag) => <small>{tag}</small>)}
+              </div>
+            </div>
+            <h3>{item.title}</h3>
+            <blockquote>{item.request}</blockquote>
+            <dl>
+              <div>
+                <dt>Real problem</dt>
+                <dd>{item.problem}</dd>
+              </div>
+              <div>
+                <dt>MVP direction</dt>
+                <dd>{item.mvp}</dd>
+              </div>
+            </dl>
+            <span class="read-more">Open case →</span>
+          </a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section id="case-method" class="section method-layout">
+    <div>
+      <p class="kicker">How each article reads</p>
+      <h2>Not a case study pretending to know the answer.</h2>
+      <p class="lede">The point is to show judgment: what to ask, what not to build, where AI is useful, where deterministic logic is safer, and how to make the first deployment boring enough to trust.</p>
+    </div>
+    <div class="method-stack">
+      <div class="method-card">
+        <strong>Customer-facing layer</strong>
+        <p>Plain-language explanation, constraints, rollout plan, and how success will be measured.</p>
+      </div>
+      <div class="method-card">
+        <strong>Technical layer</strong>
+        <p>Inputs, processing, model usage, integrations, human review, cost, reliability, and security.</p>
+      </div>
+      <div class="method-card">
+        <strong>FDE layer</strong>
+        <p>Ambiguity handling, deployment ownership, communication, and feedback loops after launch.</p>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://fde.urangurang.com/sitemap-index.xml

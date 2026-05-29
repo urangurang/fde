@@ -1,0 +1,109 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const questions = [
+  'Where do call transcripts come from today: Zoom, Google Meet, Gong, plain notes, or CRM activity logs?',
+  'Who reviews the summary before it becomes customer-facing or CRM-visible?',
+  'What does a good follow-up look like for the sales team?',
+  'Which fields matter most: pain points, stakeholders, timeline, budget, risks, next steps, or objections?',
+  'What failure is more costly: missing a key action item, or adding an incorrect one?',
+];
+
+const architecture = [
+  ['Input', 'Call transcript, meeting metadata, account name, opportunity stage, and optional CRM notes.'],
+  ['Extraction', 'LLM extracts structured fields: customer goals, pain points, objections, risks, stakeholders, and next actions.'],
+  ['Validation', 'Rules check required fields, confidence, missing owner/date, and risky statements that need human review.'],
+  ['Review', 'Account owner reviews the generated summary before CRM writeback.'],
+  ['Output', 'CRM-ready note, Slack follow-up, and internal handoff summary.'],
+];
+---
+<Layout
+  title="Sample Case: Sales Discovery Calls | Becoming an FDE"
+  description="A sample FDE case about turning sales discovery calls into structured follow-up workflows."
+>
+  <article class="case-detail">
+    <header class="case-detail-hero">
+      <a class="back-link" href="/sample-cases/">← Back to Sample Cases</a>
+      <div class="eyebrow">Sample Case 01</div>
+      <h1>A Sales Team Wants AI to Summarize Discovery Calls</h1>
+      <p class="lede">A fictional customer asks for “AI call summaries.” The FDE task is to avoid stopping at summarization and instead design a workflow that improves follow-up quality, CRM hygiene, and sales execution speed.</p>
+    </header>
+
+    <section class="detail-grid">
+      <div class="detail-main">
+        <section class="detail-block quote-block">
+          <p class="kicker">Customer request</p>
+          <blockquote>“Can AI turn our customer calls into notes, next steps, and CRM updates?”</blockquote>
+        </section>
+
+        <section class="detail-block">
+          <p class="kicker">What they are really asking for</p>
+          <h2>This is not just a summarization problem.</h2>
+          <p>The real customer pain is that sales conversations create too much unstructured information. Important details get lost, follow-up quality varies by rep, and CRM data becomes stale or incomplete.</p>
+          <p>The solution should not blindly write AI-generated notes into the CRM. It should create a reliable review workflow where the account owner can quickly approve, edit, or reject structured outputs.</p>
+        </section>
+
+        <section class="detail-block">
+          <p class="kicker">Questions I would ask first</p>
+          <ul class="question-list">
+            {questions.map((question) => <li>{question}</li>)}
+          </ul>
+        </section>
+
+        <section class="detail-block">
+          <p class="kicker">Proposed MVP</p>
+          <h2>Transcript in, reviewed follow-up out.</h2>
+          <p>The smallest useful version should process one call transcript at a time and produce a structured draft that a sales rep can review in under two minutes.</p>
+          <div class="mvp-flow">
+            <span>Transcript</span>
+            <span>Structured extraction</span>
+            <span>Human review</span>
+            <span>CRM-ready note</span>
+          </div>
+        </section>
+
+        <section class="detail-block">
+          <p class="kicker">Technical architecture</p>
+          <div class="architecture-list">
+            {architecture.map(([label, text]) => (
+              <div>
+                <strong>{label}</strong>
+                <p>{text}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section class="detail-block">
+          <p class="kicker">Customer-facing explanation</p>
+          <p>“We will start with a safe assistant that drafts call notes instead of automatically updating your CRM. Your sales reps stay in control, but the system removes the repetitive first draft work and makes every follow-up more consistent.”</p>
+        </section>
+      </div>
+
+      <aside class="detail-sidebar">
+        <div class="sticky-card">
+          <p class="kicker">Success criteria</p>
+          <ul>
+            <li>Rep reviews a call summary in under 2 minutes.</li>
+            <li>Next actions include owner and due date.</li>
+            <li>No CRM writeback happens without approval.</li>
+            <li>Sales manager can see common objections across calls.</li>
+          </ul>
+        </div>
+        <div class="sticky-card muted-card">
+          <p class="kicker">Risks</p>
+          <ul>
+            <li>Hallucinated commitments</li>
+            <li>Private customer information</li>
+            <li>Bad transcript quality</li>
+            <li>Low rep adoption if review UX is slow</li>
+          </ul>
+        </div>
+        <div class="sticky-card accent-card">
+          <p class="kicker">FDE skills shown</p>
+          <p>Problem framing, human-in-the-loop design, deployment safety, CRM integration thinking, and customer-facing explanation.</p>
+        </div>
+      </aside>
+    </section>
+  </article>
+</Layout>

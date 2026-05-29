@@ -1,0 +1,136 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout
+  title="What Is a Forward Deployed Engineer? | Becoming an FDE"
+  description="A practical explanation of the Forward Deployed Engineer role: what FDEs do, why AI companies are hiring them, what skills they need, and what analytical thinking the role requires."
+>
+  <article class="case-detail-hero">
+    <a class="back-link" href="/research/">← Back to research</a>
+    <p class="kicker">Role research · May 29, 2026</p>
+    <h1>What Is a Forward Deployed Engineer?</h1>
+    <p class="lede">The short version: an FDE is an engineer who moves toward the customer instead of waiting for requirements to arrive perfectly packaged. They understand the messy business problem, build a working solution, ship it into the customer’s real environment, and bring the learning back into the product.</p>
+  </article>
+
+  <div class="detail-grid">
+    <div class="detail-main">
+      <section class="detail-block quote-block">
+        <blockquote>FDE is not “sales engineer with a laptop.” It is closer to “product engineer embedded in reality.”</blockquote>
+      </section>
+
+      <section class="detail-block">
+        <h2>Why this role is getting attention now</h2>
+        <p>Forward Deployed Engineering is strongly associated with Palantir, but the pattern is spreading because AI products often do not become valuable by API access alone. A model or platform may be powerful, but a customer still needs the right workflow, data access, evaluation loop, governance, and user adoption path.</p>
+        <p>That creates a gap between “the technology works in a demo” and “this changes how a real organization operates.” The FDE sits in that gap. In Palantir’s current Forward Deployed AI Engineer posting, the role is described as working directly with customers, owning GenAI strategy and implementation, building end-to-end workflows, taking them to production, and feeding field learning back into the product suite.</p>
+        <p>This explains why AI-native companies are interested in FDE-like roles. The bottleneck is no longer only model capability. It is deployment: turning capability into a trustworthy workflow inside a specific customer context.</p>
+      </section>
+
+      <section class="detail-block">
+        <h2>What an FDE actually does</h2>
+        <p>The work can look different by company, but the recurring loop is simple:</p>
+        <ol class="question-list">
+          <li><strong>Diagnose the customer’s real problem.</strong> The stated request is often only a symptom. The FDE asks who makes the decision, what data is trusted, what failure looks like, and which workflow is painful enough to change.</li>
+          <li><strong>Design a small but real solution.</strong> Instead of writing a long specification first, the FDE narrows the problem into a deployable workflow: input, transformation, decision, human review, audit trail, and success metric.</li>
+          <li><strong>Build production-grade glue.</strong> This may include APIs, data pipelines, frontend tools, permissioning, observability, evaluations, and integration with the customer’s existing systems.</li>
+          <li><strong>Deploy with the customer.</strong> FDE work is not finished at “it runs on my machine.” The solution has to survive real users, real data, security constraints, changing requirements, and organizational politics.</li>
+          <li><strong>Turn field learning into product learning.</strong> If the same customer pain appears repeatedly, the FDE helps the core product team understand what should become a reusable product capability.</li>
+        </ol>
+      </section>
+
+      <section class="detail-block">
+        <h2>How it differs from adjacent roles</h2>
+        <p>A solutions engineer often supports pre-sales discovery and technical validation. A customer success engineer helps customers adopt and operate a product after purchase. A product engineer builds reusable product surfaces for many users. An FDE overlaps with all three, but the center of gravity is different: the FDE owns the path from ambiguous customer problem to deployed technical outcome.</p>
+        <p>The distinction matters because FDEs are expected to make tradeoffs under uncertainty. They cannot wait for perfect requirements, but they also cannot hack together something unmaintainable and call it a win. The job is to find the smallest real deployment that teaches the truth.</p>
+      </section>
+
+      <section class="detail-block">
+        <h2>Examples of FDE-style work</h2>
+        <div class="architecture-list">
+          <div>
+            <strong>Enterprise AI workflow</strong>
+            <p>A customer wants “an internal AI assistant.” The FDE discovers that the real value is not generic chat, but reducing the time analysts spend reconciling data across three systems. The solution becomes a retrieval workflow with source citations, role-based access, human approval, and evaluation cases built from historical analyst decisions.</p>
+          </div>
+          <div>
+            <strong>Operations dashboard</strong>
+            <p>A logistics team wants better forecasting. The FDE connects messy operational data, builds a narrow exception-management tool, and measures whether planners act faster on stockout risks. The output is not just a dashboard; it is a changed operating loop.</p>
+          </div>
+          <div>
+            <strong>Compliance-heavy automation</strong>
+            <p>A regulated customer wants to automate document review. The FDE has to design for auditability, false-positive handling, permissions, rollback, and legal review. The hard part is not only the model; it is making the system trustworthy enough to use.</p>
+          </div>
+          <div>
+            <strong>Product feedback from the field</strong>
+            <p>After several deployments, the FDE notices that every customer needs the same evaluation report before approving AI output. That observation becomes input for the core product roadmap.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="detail-block">
+        <h2>The skills an FDE needs</h2>
+        <p>The FDE profile is hybrid, but “hybrid” should not mean vague. I would group the required abilities into four layers.</p>
+        <ol class="question-list">
+          <li><strong>Engineering depth:</strong> strong coding ability, APIs, databases, cloud deployment, debugging, security basics, and the judgment to build something maintainable under time pressure.</li>
+          <li><strong>AI and data literacy:</strong> for AI-focused FDE roles, this includes LLM workflows, retrieval, evaluations, data pipelines, failure modes, and observability. Palantir’s posting explicitly calls out GenAI, data processing pipelines, advanced analytics, machine-learning basics, evaluation, training, and problem decomposition.</li>
+          <li><strong>Customer communication:</strong> the ability to speak with executives, operators, domain experts, and engineers without losing the thread. The FDE has to translate between business pain and implementation detail.</li>
+          <li><strong>Product judgment:</strong> knowing what not to build, where to put the human in the loop, which metric proves progress, and when a bespoke deployment should become a reusable product feature.</li>
+        </ol>
+      </section>
+
+      <section class="detail-block">
+        <h2>The analytical thinking behind the role</h2>
+        <p>The most important FDE skill may be analytical framing. The customer’s first sentence is rarely the final problem statement. A good FDE keeps asking:</p>
+        <ol class="question-list">
+          <li>What decision or workflow are we trying to improve?</li>
+          <li>Who experiences the pain, who approves the change, and who will maintain it?</li>
+          <li>What data is available, what data is trusted, and what data is missing?</li>
+          <li>What would make this solution unsafe, unused, or politically impossible?</li>
+          <li>What is the smallest deployment that can prove or disprove the value?</li>
+          <li>Which parts are customer-specific, and which parts should become product?</li>
+        </ol>
+        <p>This is why I find the role interesting. FDE work rewards the ability to connect systems thinking, product thinking, and implementation skill. It is not enough to be a strong coder in isolation. You have to reason about incentives, constraints, trust, adoption, and measurable outcomes.</p>
+      </section>
+
+      <section class="detail-block">
+        <h2>My working definition</h2>
+        <p>A Forward Deployed Engineer is a technical operator who turns ambiguous customer problems into deployed software outcomes, while continuously translating field learning back into product direction.</p>
+        <p>That definition is useful because it gives me a preparation checklist. To become credible for FDE roles, I need to show more than code samples. I need sample cases, deployment writeups, customer-style discovery notes, evaluation plans, and clear explanations of tradeoffs. This site is my public practice loop for building exactly that evidence.</p>
+      </section>
+
+      <section class="detail-block">
+        <h2>Sources and further reading</h2>
+        <ul class="question-list">
+          <li><a href="https://jobs.lever.co/palantir/636fc05c-d348-4a06-be51-597cb9e07488">Palantir — Forward Deployed AI Engineer job posting</a></li>
+          <li><a href="https://www.paraform.com/blog/forward-deployed-engineer-palantir-runway-greptile">Paraform — What a Forward-Deployed Engineer Actually Does at Palantir, Runway, and Greptile</a></li>
+          <li><a href="https://thenewstack.io/forward-deployed-engineer-fde-openai-google/">The New Stack — Forward deployed engineer is AI’s hottest job</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <aside class="detail-sidebar">
+      <div class="sticky-card accent-card">
+        <p class="kicker">Core idea</p>
+        <p>FDEs reduce the distance between product capability and customer reality.</p>
+      </div>
+      <div class="sticky-card">
+        <p class="kicker">Signals to build</p>
+        <ul>
+          <li>Customer discovery notes</li>
+          <li>Small deployed demos</li>
+          <li>Architecture tradeoffs</li>
+          <li>Evaluation plans</li>
+          <li>Post-deployment retrospectives</li>
+        </ul>
+      </div>
+      <div class="sticky-card muted-card">
+        <p class="kicker">Adjacent roles</p>
+        <ul>
+          <li>Solutions Engineer</li>
+          <li>Sales Engineer</li>
+          <li>Customer Success Engineer</li>
+          <li>Product Engineer</li>
+          <li>Applied AI Engineer</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</Layout>
