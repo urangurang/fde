@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Becoming an FDE favicon">
+  <rect width="64" height="64" rx="14" fill="#141414"/>
+  <path d="M18 12h24l8 8v32H18z" fill="#fffaf0" stroke="#ded8cb" stroke-width="2"/>
+  <path d="M42 12v10h10" fill="none" stroke="#ded8cb" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M25 28h15M25 36h11M25 44h15" stroke="#141414" stroke-width="3" stroke-linecap="round" opacity="0.88"/>
+  <path d="M18 52C29 48 34 35 48 24" fill="none" stroke="#1f5eff" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="18" cy="52" r="4.5" fill="#1f5eff" stroke="#fffaf0" stroke-width="2"/>
+  <circle cx="48" cy="24" r="4.5" fill="#1f5eff" stroke="#fffaf0" stroke-width="2"/>
+</svg>
