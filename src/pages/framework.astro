@@ -185,12 +185,21 @@ const compactModel = [
     </aside>
   </section>
 
-  <section class="section framework-summary">
+  <section class="section framework-summary visual-summary">
     <div>
       <p class="kicker">Compact version</p>
       <h2>Request → Workflow → Trust → Deployment</h2>
+      <p class="lede">Most customer requirements arrive as feature requests. The FDE job is to translate them into operational systems: who acts, what data moves, what risk exists, what can be automated safely, and what should be measured after launch.</p>
     </div>
-    <p class="lede">Most customer requirements arrive as feature requests. The FDE job is to translate them into operational systems: who acts, what data moves, what risk exists, what can be automated safely, and what should be measured after launch.</p>
+    <div class="framework-pipeline" aria-label="Requirement response pipeline">
+      {compactModel.map(([label, text], index) => (
+        <div class="pipeline-stage">
+          <span>{String(index + 1).padStart(2, '0')}</span>
+          <strong>{label}</strong>
+          <p>{text}</p>
+        </div>
+      ))}
+    </div>
   </section>
 
   <section id="framework-steps" class="section framework-steps">

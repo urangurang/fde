@@ -2,42 +2,104 @@
 import Layout from '../layouts/Layout.astro';
 ---
 <Layout>
-  <section class="hero">
-    <div class="eyebrow">Field notes in public</div>
-    <h1>Becoming a Forward Deployed Engineer.</h1>
-    <p class="lede">I’m documenting my journey toward FDE roles through sample customer cases, job posting research, portfolio projects, and reflections on the application process in public.</p>
-    <div class="actions">
-      <a class="button" href="/sample-cases/">Explore sample cases</a>
-      <a class="button secondary" href="/roadmap/">See the 30-day roadmap</a>
+  <section class="hero home-hero">
+    <div class="home-hero-copy">
+      <div class="eyebrow">Field notes in public</div>
+      <h1>Becoming a Forward Deployed Engineer.</h1>
+      <p class="lede">I’m documenting my journey toward FDE roles through sample customer cases, job posting research, portfolio projects, and reflections on the application process in public.</p>
+      <div class="actions">
+        <a class="button" href="/sample-cases/">Explore sample cases</a>
+        <a class="button secondary" href="/framework/">See the framework</a>
+      </div>
     </div>
+
+    <aside class="field-map" aria-label="FDE preparation map">
+      <div class="map-window">
+        <div class="map-bar"><span></span><span></span><span></span></div>
+        <div class="map-canvas">
+          <div class="map-node request">
+            <small>01</small>
+            <strong>Request</strong>
+            <span>messy customer ask</span>
+          </div>
+          <div class="map-node workflow">
+            <small>02</small>
+            <strong>Workflow</strong>
+            <span>real operating path</span>
+          </div>
+          <div class="map-node trust">
+            <small>03</small>
+            <strong>Trust</strong>
+            <span>review + safety boundary</span>
+          </div>
+          <div class="map-node deploy">
+            <small>04</small>
+            <strong>Deploy</strong>
+            <span>small useful system</span>
+          </div>
+          <svg class="map-lines" viewBox="0 0 520 360" aria-hidden="true">
+            <path d="M122 95 C210 40 300 45 383 100" />
+            <path d="M392 135 C430 205 350 250 265 250" />
+            <path d="M235 250 C155 250 105 212 106 151" />
+            <path class="accent-line" d="M142 124 C222 158 292 168 368 132" />
+          </svg>
+        </div>
+      </div>
+      <div class="signal-strip" aria-label="Preparation signals">
+        <span>Cases</span>
+        <span>Research</span>
+        <span>Portfolio</span>
+        <span>Applications</span>
+      </div>
+    </aside>
   </section>
 
-  <section class="grid" aria-label="Content pillars">
-    <article class="card">
+  <section class="visual-pillar-grid" aria-label="Content pillars">
+    <article class="pillar-card journal">
+      <div class="pillar-visual mini-journal" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
       <small>01</small>
       <h3>Application Journal</h3>
       <p>Notes from real preparation work: resume rewrites, applications, weekly progress, and retrospectives.</p>
     </article>
-    <article class="card">
+    <article class="pillar-card cases">
+      <div class="pillar-visual mini-case" aria-hidden="true">
+        <span>Ask</span><i></i><span>MVP</span>
+      </div>
       <small>02</small>
       <h3>Sample Cases</h3>
       <p>Fictional customer requests translated into questions, MVP architecture, risks, and deployment plans.</p>
     </article>
-    <article class="card">
+    <article class="pillar-card research">
+      <div class="pillar-visual mini-radar" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
       <small>03</small>
       <h3>FDE Research</h3>
       <p>What the role requires, how it differs from adjacent roles, and why AI companies care about deployment.</p>
     </article>
-    <article class="card">
+    <article class="pillar-card portfolio">
+      <div class="pillar-visual mini-stack" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
       <small>04</small>
       <h3>Portfolio Projects</h3>
       <p>Small deployed demos that show ambiguous problem solving, customer context, and clear communication.</p>
     </article>
   </section>
 
-  <section class="section">
-    <p class="kicker">Starting point</p>
-    <h2>This is not expert advice yet. It is a public preparation loop.</h2>
-    <p class="lede">The goal is to connect every piece of content to a real action: reading job postings, improving application materials, building demos, or learning from outcomes.</p>
+  <section class="section prep-loop-section">
+    <div>
+      <p class="kicker">Starting point</p>
+      <h2>This is not expert advice yet. It is a public preparation loop.</h2>
+      <p class="lede">The goal is to connect every piece of content to a real action: reading job postings, improving application materials, building demos, or learning from outcomes.</p>
+    </div>
+    <div class="loop-diagram" aria-label="Public preparation loop">
+      <div><strong>Read</strong><span>job posts</span></div>
+      <div><strong>Frame</strong><span>case problems</span></div>
+      <div><strong>Build</strong><span>small demos</span></div>
+      <div><strong>Reflect</strong><span>application notes</span></div>
+    </div>
   </section>
 </Layout>
