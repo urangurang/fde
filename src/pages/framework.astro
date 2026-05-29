@@ -1,0 +1,250 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const frameworkSteps = [
+  {
+    number: '01',
+    title: 'Clarify the problem or request',
+    short: 'Do not accept the requested feature as the real problem yet.',
+    questions: [
+      'What job is the customer trying to get done?',
+      'Who needs the result, and when do they act on it?',
+      'How is this handled today, and where does it break?',
+      'What would become faster, safer, or more consistent if this worked?',
+    ],
+    example: {
+      asks: '“Can AI summarize our sales calls?”',
+      reframed: 'Sales reps need faster follow-ups, cleaner CRM records, and shared visibility into risks, objections, and next actions.',
+    },
+  },
+  {
+    number: '02',
+    title: 'Find the real user and decision point',
+    short: 'The requester, buyer, daily user, and reviewer may be different people.',
+    questions: [
+      'Who requested this, and who will use it every day?',
+      'Who reviews, approves, or rejects the output?',
+      'What decision or customer action depends on this result?',
+      'Who owns the workflow after the first deployment?',
+    ],
+    example: {
+      asks: 'Requester: VP of Sales',
+      reframed: 'Users: account executives and sales managers. Decision points: follow-up email, CRM update, pipeline risk review.',
+    },
+  },
+  {
+    number: '03',
+    title: 'Map the current workflow',
+    short: 'Before inserting AI, understand the path that data and decisions already take.',
+    questions: [
+      'Where does the input come from?',
+      'Which tools are already in the loop?',
+      'Where do humans add judgment?',
+      'Where do delays, omissions, or errors happen repeatedly?',
+    ],
+    example: {
+      asks: 'Call → notes → follow-up → CRM update → manager review',
+      reframed: 'The bottleneck is not one missing summary. It is a fragile handoff chain after every customer conversation.',
+    },
+  },
+  {
+    number: '04',
+    title: 'Separate the stated request from the underlying need',
+    short: 'Translate the feature request into the operational improvement it is pointing at.',
+    questions: [
+      'What did they literally ask for?',
+      'What business outcome are they probably trying to improve?',
+      'What risk appears if we implement the request too literally?',
+      'What workflow should the solution improve instead?',
+    ],
+    example: {
+      asks: 'They asked for: AI-generated call summaries.',
+      reframed: 'They probably need: a reviewed workflow that turns messy call data into next actions, CRM-ready notes, and sales signals.',
+    },
+  },
+  {
+    number: '05',
+    title: 'Define success criteria before solution',
+    short: 'A generated output is not success. Changed behavior in the workflow is success.',
+    questions: [
+      'How will we know the deployment is useful?',
+      'Is the goal speed, accuracy, adoption, compliance, revenue, or visibility?',
+      'Who judges quality?',
+      'What metric proves this is worth expanding?',
+    ],
+    example: {
+      asks: 'Weak metric: “The AI creates a summary.”',
+      reframed: 'Better metric: reps review in under 2 minutes; next actions include owner and due date; CRM notes update within 1 hour.',
+    },
+  },
+  {
+    number: '06',
+    title: 'Classify risk and trust boundaries',
+    short: 'Decide where AI can draft, where rules should validate, and where humans stay in control.',
+    questions: [
+      'What is low-risk suggestion work?',
+      'What touches customer-visible or business-critical records?',
+      'What requires approval before writeback?',
+      'What failure mode is most expensive?',
+    ],
+    example: {
+      asks: 'Low risk: draft and summarize. Medium risk: internal writeback after approval. High risk: customer-facing commitments.',
+      reframed: 'Start with a review workflow before automating CRM updates or customer messages.',
+    },
+  },
+  {
+    number: '07',
+    title: 'Design the smallest safe workflow',
+    short: 'The MVP is not a feature list. It is a tiny workflow that can be used, reviewed, and measured.',
+    questions: [
+      'What is the smallest useful input?',
+      'What output saves real work immediately?',
+      'Who reviews it, and how long should review take?',
+      'Where does the approved result go?',
+    ],
+    example: {
+      asks: 'MVP shape: one transcript in → structured draft out → rep reviews → CRM-ready note.',
+      reframed: 'Keep the first deployment boring, bounded, and safe enough for real users to trust.',
+    },
+  },
+  {
+    number: '08',
+    title: 'Propose architecture around the workflow',
+    short: 'Architecture follows the workflow: inputs, processing, validation, review, integration, feedback.',
+    questions: [
+      'What data is needed, and what can be optional?',
+      'Where are deterministic rules better than model calls?',
+      'What needs logging, auditability, or rollback?',
+      'How will user feedback improve the next version?',
+    ],
+    example: {
+      asks: 'Ingest transcript → extract fields → validate → review UI → approved writeback → feedback log.',
+      reframed: 'The FDE answer is not just “use an LLM.” It is a deployable system around the LLM.',
+    },
+  },
+  {
+    number: '09',
+    title: 'Explain tradeoffs in customer language',
+    short: 'Make the technical choice understandable without hiding constraints.',
+    questions: [
+      'Why start with review instead of full automation?',
+      'What risk does this architecture reduce?',
+      'What does the customer gain immediately?',
+      'What will become automatable later if trust improves?',
+    ],
+    example: {
+      asks: '“We will not auto-write to CRM on day one.”',
+      reframed: '“Your reps stay in control while the system removes repetitive first-draft work and teaches us what can be safely automated next.”',
+    },
+  },
+  {
+    number: '10',
+    title: 'Define the expansion path',
+    short: 'Show how the first safe deployment can grow into a more automated operating system.',
+    questions: [
+      'What comes after the first workflow is trusted?',
+      'Which parts can move from draft to approval to automation?',
+      'What new dashboard, alert, or integration becomes possible?',
+      'What feedback loop keeps the system improving?',
+    ],
+    example: {
+      asks: 'Phase 1: reviewed summaries. Phase 2: CRM fields. Phase 3: manager dashboard. Phase 4: suggested follow-ups.',
+      reframed: 'Expand automation only where the workflow proves value and earns trust.',
+    },
+  },
+];
+
+const compactModel = [
+  ['Request', 'What did the customer ask for?'],
+  ['Workflow', 'What operational workflow is this really part of?'],
+  ['Trust', 'Where can AI act safely, and where does a human need to stay in control?'],
+  ['Deployment', 'What is the smallest version that can be shipped, used, measured, and expanded?'],
+];
+---
+<Layout
+  title="Requirement Response Framework | Becoming an FDE"
+  description="A field guide for clarifying customer requests, mapping workflows, setting trust boundaries, and designing deployable FDE solutions."
+>
+  <section class="hero framework-hero">
+    <div class="framework-hero-copy">
+      <p class="eyebrow">FDE Mental Model</p>
+      <h1>From customer request to deployable workflow.</h1>
+      <p class="lede">A repeatable way to analyze ambiguous requirements: clarify the request, find the real workflow, set trust boundaries, and design the smallest safe deployment.</p>
+      <div class="actions">
+        <a class="button" href="#framework-steps">Read the framework</a>
+        <a class="button secondary" href="/sample-cases/">Apply it to sample cases</a>
+      </div>
+    </div>
+    <aside class="framework-orbit" aria-label="Short mental model">
+      {compactModel.map(([label, text]) => (
+        <div>
+          <strong>{label}</strong>
+          <span>{text}</span>
+        </div>
+      ))}
+    </aside>
+  </section>
+
+  <section class="section framework-summary">
+    <div>
+      <p class="kicker">Compact version</p>
+      <h2>Request → Workflow → Trust → Deployment</h2>
+    </div>
+    <p class="lede">Most customer requirements arrive as feature requests. The FDE job is to translate them into operational systems: who acts, what data moves, what risk exists, what can be automated safely, and what should be measured after launch.</p>
+  </section>
+
+  <section id="framework-steps" class="section framework-steps">
+    <div class="section-heading">
+      <p class="kicker">Detailed framework</p>
+      <h2>Ten lenses for analyzing a requirement.</h2>
+      <p>Each step turns a vague request into a more deployable decision: question the request, expose the workflow, define success, and protect the trust boundary.</p>
+    </div>
+
+    <div class="framework-step-list">
+      {frameworkSteps.map((step) => (
+        <article class="framework-step-card">
+          <div class="framework-step-number">{step.number}</div>
+          <div class="framework-step-content">
+            <h3>{step.title}</h3>
+            <p>{step.short}</p>
+            <div class="question-cloud">
+              {step.questions.map((question) => <span>{question}</span>)}
+            </div>
+            <div class="translation-box">
+              <div>
+                <small>Surface</small>
+                <p>{step.example.asks}</p>
+              </div>
+              <div>
+                <small>FDE translation</small>
+                <p>{step.example.reframed}</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section framework-application">
+    <div class="accent-card sticky-card">
+      <p class="kicker">How to use this in a case</p>
+      <h2>Show judgment, not just implementation ability.</h2>
+      <p>For every sample case, the page should make the thinking visible: the customer asked for X, but the workflow needs Y; the safe MVP is Z; this is where humans review; this is how we know it worked.</p>
+    </div>
+    <div class="method-stack">
+      <div class="method-card">
+        <strong>Case page sections</strong>
+        <p>Customer request → real workflow → key questions → trust boundary → MVP → architecture → success criteria → expansion path.</p>
+      </div>
+      <div class="method-card">
+        <strong>Good default answer</strong>
+        <p>Do not jump to full automation. Start with a draft, review, validation, and measurement loop. Then expand where trust is earned.</p>
+      </div>
+      <div class="method-card">
+        <strong>FDE signal</strong>
+        <p>The strongest signal is not using AI. It is knowing where AI belongs inside a messy customer operation.</p>
+      </div>
+    </div>
+  </section>
+</Layout>
